@@ -29,6 +29,29 @@ const server = http.createServer((req, res) => {
       res.end();
     });
   }
+
+  //jupiter page
+  else if (page == '/jupiter') {
+    fs.readFile('jupiter/index.html', function(err, data) {
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      res.write(data);
+      res.end();
+    });
+  }else if (page == '/jupiter/script.js'){
+    fs.readFile('jupiter/script.js', function(err, data) {
+      res.writeHead(200, {'Content-Type': 'text/javascript'});
+      res.write(data);
+      res.end();
+    });
+  }
+  else if (page == '/jupiter/style.css'){
+    fs.readFile('jupiter/style.css', function(err, data) {
+      res.write(data);
+      res.end();
+    });
+  }
+
+
   else if (page == '/api') {
     if('student' in params){
       if(params['student']== 'leon'){
